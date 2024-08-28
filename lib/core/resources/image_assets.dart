@@ -4,4 +4,5 @@ class ImageAssets {
 
 class IconAssets {
   static const String routeIcon = 'assets/images/Route icon.png';
+  static const String showPasswordIcon = 'assets/images/Eye.png';
 }
