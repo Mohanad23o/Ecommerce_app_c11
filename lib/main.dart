@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: RouteGenerator.getRoute,
       ),
       minTextAdapt: true,
-      designSize: Size(430, 932),
+      designSize: const Size(430, 932),
     );
   }
 }

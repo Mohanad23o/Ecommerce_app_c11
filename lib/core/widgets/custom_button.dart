@@ -6,18 +6,18 @@ class CustomButton extends StatelessWidget {
   Widget child;
   VoidCallback onTap;
 
-  CustomButton({required this.child, required this.onTap});
+  CustomButton({super.key, required this.child, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: onTap,
-      child: child,
       style: TextButton.styleFrom(
           backgroundColor: ColorManager.white,
           padding: EdgeInsets.symmetric(vertical: 14.w),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),
+      child: child,
     );
   }
 }

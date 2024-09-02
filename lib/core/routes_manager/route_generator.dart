@@ -1,5 +1,7 @@
 import 'package:e_commerce_app_c11/core/routes_manager/routes.dart';
-import 'package:e_commerce_app_c11/features/auth/login_screen.dart';
+import 'package:e_commerce_app_c11/features/auth/login/login_screen.dart';
+import 'package:e_commerce_app_c11/features/auth/register/register_screen.dart';
+import 'package:e_commerce_app_c11/features/main/main_layout.dart';
 import 'package:e_commerce_app_c11/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -7,9 +9,13 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.splashScreenRoute:
-        return MaterialPageRoute(builder: (_) => SplashScreen());
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.signInRoute:
-        return MaterialPageRoute(builder: (_) => LoginScreen());
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
+      case Routes.signUpRoute:
+        return MaterialPageRoute(builder: (_) => const RegisterScreen());
+      case Routes.mainRoute:
+        return MaterialPageRoute(builder: (_) => const MainLayout());
       default:
         return unDefinedRoute();
     }
@@ -19,9 +25,9 @@ class RouteGenerator {
     return MaterialPageRoute(
         builder: (_) => Scaffold(
               appBar: AppBar(
-                title: Text('No Route Found'),
+                title: const Text('No Route Found'),
               ),
-              body: Center(
+              body: const Center(
                 child: Text('No Route Found'),
               ),
             ));

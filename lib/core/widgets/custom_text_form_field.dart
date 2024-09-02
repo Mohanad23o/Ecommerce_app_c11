@@ -9,30 +9,35 @@ class CustomTextFormField extends StatelessWidget {
   TextEditingController? controller;
   int? maxLine;
   bool obscureText;
-  MyVaildator vaildator;
+  MyVaildator validator;
   String? hintText;
+  TextInputType? textInputType;
   Widget? suffixIcon;
   TextStyle? labelStyle;
   String? labelText;
 
-  CustomTextFormField(
-      {this.controller,
+  CustomTextFormField({super.key, this.controller,
       this.suffixIcon,
+      this.textInputType,
       this.labelStyle,
       this.labelText,
       this.maxLine,
       this.obscureText = false,
-      this.vaildator,
+      this.validator,
       this.hintText});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: textInputType,
       controller: controller,
       maxLines: maxLine,
       obscureText: obscureText,
-      validator: vaildator,
+      validator: validator,
       decoration: InputDecoration(
+          errorMaxLines: 2,
+          helperMaxLines: 2,
+          hintMaxLines: 2,
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
               borderSide:
