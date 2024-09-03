@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class CustomThemeData {
   static final ThemeData lightMode = ThemeData(
-      scaffoldBackgroundColor: ColorManager.primary,
+      scaffoldBackgroundColor: ColorManager.transparent,
       brightness: Brightness.light,
       primaryColor: ColorManager.primary);
 }

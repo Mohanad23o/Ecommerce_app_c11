@@ -1,7 +1,7 @@
 import 'package:e_commerce_app_c11/core/routes_manager/routes.dart';
 import 'package:e_commerce_app_c11/features/auth/login/login_screen.dart';
 import 'package:e_commerce_app_c11/features/auth/register/register_screen.dart';
-import 'package:e_commerce_app_c11/features/main/main_layout.dart';
+import 'package:e_commerce_app_c11/features/main_layout/main_layout.dart';
 import 'package:e_commerce_app_c11/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 

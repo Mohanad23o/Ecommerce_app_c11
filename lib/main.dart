@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         theme: CustomThemeData.lightMode,
         debugShowCheckedModeBanner: false,
         home: child,
-        initialRoute: Routes.splashScreenRoute,
+        initialRoute: Routes.mainRoute,
         onGenerateRoute: RouteGenerator.getRoute,
       ),
       minTextAdapt: true,

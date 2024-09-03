@@ -47,12 +47,16 @@ class _LoginScreenState extends State<LoginScreen> {
           DialogUtils.hideLoading(context);
           DialogUtils.showMassage(
               context: context,
+              posAction: () {
+                Navigator.pushReplacementNamed(context, Routes.mainRoute);
+              },
               content: 'Login Successful',
               posActionName: 'Ok',
               title: 'Success');
         }
       },
       child: Scaffold(
+        backgroundColor: ColorManager.primary,
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: SingleChildScrollView(
@@ -164,8 +168,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.pushReplacementNamed(
-                              context, Routes.signUpRoute);
+                          Navigator.pushNamed(context, Routes.signUpRoute);
                         },
                         child: Text(
                           AppConstants.createAccount,

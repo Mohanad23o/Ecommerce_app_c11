@@ -19,6 +19,8 @@ class AppConstants {
   static const String enterPhone = 'enter your mobile no.';
   static const String phoneNumber = 'Mobile Number';
   static const String enterEmail = 'enter your email address';
+  static const String category = 'Categories';
+  static const String brand = 'Brands';
 }
 
 class ApiConstants {
@@ -26,5 +28,7 @@ class ApiConstants {
 
   static const String baseUrl = 'https://ecommerce.routemisr.com';
   static const String signUpApi = '/api/v1/auth/signup';
+  static const String brandsApi = '/api/v1/brands';
+  static const String categoriesApi = '/api/v1/categories';
   static const String signInApi = '/api/v1/auth/signin';
 }

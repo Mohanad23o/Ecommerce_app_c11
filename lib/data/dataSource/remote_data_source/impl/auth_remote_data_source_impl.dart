@@ -5,10 +5,11 @@ import 'package:e_commerce_app_c11/data/api_manager.dart';
 import 'package:e_commerce_app_c11/data/dataSource/remote_data_source/auth_remote_data_source.dart';
 import 'package:e_commerce_app_c11/data/model/login_response_dto.dart';
 import 'package:e_commerce_app_c11/data/model/register_response_dto.dart';
+import 'package:e_commerce_app_c11/di/di_impl.dart';
 import 'package:e_commerce_app_c11/domain/error.dart';
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
-  ApiManager apiManager = ApiManager.getInstance();
+  ApiManager apiManager = injectApiManager();
 
   @override
   Future<Either<Failures, RegisterResponseDto>> register(
