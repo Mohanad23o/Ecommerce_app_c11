@@ -22,7 +22,7 @@ class CustomSlideShow extends StatelessWidget {
   ];
   OnSlideShowImageChanged onPageChanged;
 
-  CustomSlideShow({this.onPageChanged});
+  CustomSlideShow({super.key, this.onPageChanged});
 
   @override
   Widget build(BuildContext context) {

@@ -8,7 +8,8 @@ class CustomBrandOrCategoryWidget extends StatelessWidget {
   String imagePath;
   String title;
 
-  CustomBrandOrCategoryWidget({required this.imagePath, required this.title});
+  CustomBrandOrCategoryWidget(
+      {super.key, required this.imagePath, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +27,8 @@ class CustomBrandOrCategoryWidget extends StatelessWidget {
               fit: BoxFit.cover,
               imageUrl: imagePath,
               placeholder: (context, url) =>
-                  Center(child: CircularProgressIndicator()),
-              errorWidget: (context, url, error) => Icon(Icons.error),
+                  const Center(child: CircularProgressIndicator()),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
         ),

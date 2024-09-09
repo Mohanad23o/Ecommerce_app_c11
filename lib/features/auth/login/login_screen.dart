@@ -3,6 +3,7 @@ import 'package:e_commerce_app_c11/core/resources/color_manager.dart';
 import 'package:e_commerce_app_c11/core/resources/font_manager.dart';
 import 'package:e_commerce_app_c11/core/resources/image_assets.dart';
 import 'package:e_commerce_app_c11/core/resources/style_manager.dart';
+import 'package:e_commerce_app_c11/core/resources/utils/shared_preferences_utils.dart';
 import 'package:e_commerce_app_c11/core/routes_manager/routes.dart';
 import 'package:e_commerce_app_c11/core/widgets/custom_button.dart';
 import 'package:e_commerce_app_c11/core/widgets/custom_text_form_field.dart';
@@ -27,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   LoginScreenViewModel viewModel =
       LoginScreenViewModel(loginUseCase: injectLoginUseCase());
-  bool obscurePassword = false;
+  bool obscurePassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -47,12 +48,13 @@ class _LoginScreenState extends State<LoginScreen> {
           DialogUtils.hideLoading(context);
           DialogUtils.showMassage(
               context: context,
-              posAction: () {
-                Navigator.pushReplacementNamed(context, Routes.mainRoute);
-              },
               content: 'Login Successful',
               posActionName: 'Ok',
               title: 'Success');
+          print(state.loginResponseEntity.token);
+          SharedPreferencesUtils.saveData(
+              'token', state.loginResponseEntity.token);
+          Navigator.pushReplacementNamed(context, Routes.mainRoute);
         }
       },
       child: Scaffold(

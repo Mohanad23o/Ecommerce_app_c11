@@ -1,5 +1,4 @@
 import 'package:e_commerce_app_c11/core/resources/app_constants.dart';
-import 'package:e_commerce_app_c11/core/resources/color_manager.dart';
 import 'package:e_commerce_app_c11/di/di_impl.dart';
 import 'package:e_commerce_app_c11/features/main_layout/cubit/home_screen_view_model.dart';
 import 'package:e_commerce_app_c11/features/main_layout/cubit/home_tab_state.dart';
@@ -10,9 +9,10 @@ import 'package:e_commerce_app_c11/features/main_layout/widgets/custom_slide_sho
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class HomeTab extends StatefulWidget {
-  HomeTab({super.key});
+  const HomeTab({super.key});
 
   @override
   State<HomeTab> createState() => _HomeTabState();
@@ -28,7 +28,9 @@ class _HomeTabState extends State<HomeTab> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CustomSearchBar(),
+            CustomSearchBar(
+              cartItemCount: 0,
+            ),
             Container(
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -44,29 +46,47 @@ class _HomeTabState extends State<HomeTab> {
                     bloc: viewModel..getAllCategories(),
                     builder: (context, state) {
                       if (state is HomeTabLoadingState) {
-                        return const Center(
-                          child: CircularProgressIndicator(
-                            color: ColorManager.primary,
-                          ),
-                        );
+                        return GridView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 20,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2),
+                            itemBuilder: (context, itemIndex) {
+                              return Skeletonizer(
+                                enabled: true,
+                                child: CustomBrandOrCategoryWidget(
+                                    imagePath: viewModel
+                                            .categoryList?[itemIndex].image ??
+                                        '',
+                                    title: viewModel
+                                            .categoryList?[itemIndex].name ??
+                                        ''),
+                              );
+                            });
                       } else if (state is HomeTabErrorState) {
                         return Center(
                           child: Text(state.errorMessage),
                         );
                       } else if (state is HomeTabSuccessState) {
-                        return GridView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: viewModel.categoryList?.length,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2),
-                            itemBuilder: (context, itemIndex) {
-                              return CustomBrandOrCategoryWidget(
-                                  imagePath:
-                                      viewModel.categoryList![itemIndex].image!,
-                                  title:
-                                      viewModel.categoryList![itemIndex].name!);
-                            });
+                        return Skeletonizer(
+                          enabled: false,
+                          child: GridView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: viewModel.categoryList?.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2),
+                              itemBuilder: (context, itemIndex) {
+                                return CustomBrandOrCategoryWidget(
+                                    imagePath: viewModel
+                                            .categoryList?[itemIndex].image ??
+                                        '',
+                                    title: viewModel
+                                            .categoryList?[itemIndex].name ??
+                                        '');
+                              }),
+                        );
                       }
                       return Container();
                     })), // todo:categories
@@ -80,29 +100,47 @@ class _HomeTabState extends State<HomeTab> {
                     bloc: viewModel..getAllBrands(),
                     builder: (context, state) {
                       if (state is HomeTabLoadingState) {
-                        return const Center(
-                          child: CircularProgressIndicator(
-                            color: ColorManager.primary,
-                          ),
-                        );
+                        return GridView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 20,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2),
+                            itemBuilder: (context, itemIndex) {
+                              return Skeletonizer(
+                                enabled: true,
+                                child: CustomBrandOrCategoryWidget(
+                                    imagePath: viewModel
+                                            .brandsList?[itemIndex].image ??
+                                        '',
+                                    title:
+                                        viewModel.brandsList?[itemIndex].name ??
+                                            ''),
+                              );
+                            });
                       } else if (state is HomeTabErrorState) {
                         return Center(
                           child: Text(state.errorMessage),
                         );
                       } else if (state is HomeTabSuccessState) {
-                        return GridView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: viewModel.brandsList?.length,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2),
-                            itemBuilder: (context, itemIndex) {
-                              return CustomBrandOrCategoryWidget(
-                                  imagePath:
-                                      viewModel.brandsList![itemIndex].image!,
-                                  title:
-                                      viewModel.brandsList![itemIndex].name!);
-                            });
+                        return Skeletonizer(
+                          enabled: false,
+                          child: GridView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: viewModel.brandsList?.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2),
+                              itemBuilder: (context, itemIndex) {
+                                return CustomBrandOrCategoryWidget(
+                                    imagePath: viewModel
+                                            .brandsList?[itemIndex].image! ??
+                                        '',
+                                    title: viewModel
+                                            .brandsList?[itemIndex].name! ??
+                                        '');
+                              }),
+                        );
                       }
                       return Container();
                     })), // todo:Brands

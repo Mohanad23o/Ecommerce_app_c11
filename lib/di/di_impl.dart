@@ -7,7 +7,9 @@ import 'package:e_commerce_app_c11/data/repository/auth_repository_impl.dart';
 import 'package:e_commerce_app_c11/data/repository/home_repository_impl.dart';
 import 'package:e_commerce_app_c11/domain/repository/auth_repository.dart';
 import 'package:e_commerce_app_c11/domain/repository/home_repository.dart';
+import 'package:e_commerce_app_c11/domain/useCases/add_to_cart_use_case.dart';
 import 'package:e_commerce_app_c11/domain/useCases/get_all_categories_or_brands_use_case.dart';
+import 'package:e_commerce_app_c11/domain/useCases/get_all_products_use_case.dart';
 import 'package:e_commerce_app_c11/domain/useCases/login_use_case.dart';
 import 'package:e_commerce_app_c11/domain/useCases/register_use_case.dart';
 import 'package:e_commerce_app_c11/features/main_layout/cubit/home_screen_view_model.dart';
@@ -48,4 +50,12 @@ HomeScreenViewModel injectHomeTabViewModel() {
 GetAllCategoriesOrBrandsUseCase injectGetAllCategoriesUseCase() {
   return GetAllCategoriesOrBrandsUseCase(
       homeRepository: injectHomeRepository());
+}
+
+GetAllProductsUseCase injectGetAllProductsUseCase() {
+  return GetAllProductsUseCase(homeRepository: injectHomeRepository());
+}
+
+AddToCartUseCase injectAddToCartUseCase() {
+  return AddToCartUseCase(homeRepository: injectHomeRepository());
 }

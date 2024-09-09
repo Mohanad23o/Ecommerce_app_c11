@@ -8,7 +8,7 @@ class CustomSectionBar extends StatelessWidget {
   String sectionName;
   VoidCallback? onViewAllTap;
 
-  CustomSectionBar({required this.sectionName, this.onViewAllTap});
+  CustomSectionBar({super.key, required this.sectionName, this.onViewAllTap});
 
   @override
   Widget build(BuildContext context) {

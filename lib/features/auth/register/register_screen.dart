@@ -27,7 +27,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   RegisterScreenViewModel viewModel =
       RegisterScreenViewModel(registerUseCase: injectRegisterUseCase());
   final _formKey = GlobalKey<FormState>();
-  bool obscurePassword = false;
+  bool obscurePassword = true;
 
   @override
   Widget build(BuildContext context) {

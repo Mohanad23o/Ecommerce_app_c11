@@ -1,6 +1,6 @@
 import 'package:e_commerce_app_c11/core/resources/color_manager.dart';
 import 'package:e_commerce_app_c11/core/resources/image_assets.dart';
-import 'package:e_commerce_app_c11/features/main_layout/tabs/category/category_tab.dart';
+import 'package:e_commerce_app_c11/features/main_layout/tabs/category/products_tab.dart';
 import 'package:e_commerce_app_c11/features/main_layout/tabs/favourite/favourites_tab.dart';
 import 'package:e_commerce_app_c11/features/main_layout/tabs/home/home_tab.dart';
 import 'package:e_commerce_app_c11/features/main_layout/tabs/profile/profile_tab.dart';
@@ -15,7 +15,12 @@ class MainLayout extends StatefulWidget {
 }
 
 class _MainLayoutState extends State<MainLayout> {
-  List<Widget> tabs = [HomeTab(), CategoryTab(), FavouritesTab(), ProfileTab()];
+  List<Widget> tabs = [
+    const HomeTab(),
+    ProductsTab(),
+    const FavouritesTab(),
+    const ProfileTab()
+  ];
   int currentIndex = 0;
 
   @override
