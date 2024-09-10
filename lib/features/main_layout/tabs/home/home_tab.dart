@@ -1,5 +1,5 @@
 import 'package:e_commerce_app_c11/core/resources/app_constants.dart';
-import 'package:e_commerce_app_c11/di/di_impl.dart';
+import 'package:e_commerce_app_c11/di/di.dart';
 import 'package:e_commerce_app_c11/features/main_layout/cubit/home_screen_view_model.dart';
 import 'package:e_commerce_app_c11/features/main_layout/cubit/home_tab_state.dart';
 import 'package:e_commerce_app_c11/features/main_layout/widgets/custom_brand_or_category_widget.dart';
@@ -19,8 +19,7 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  HomeScreenViewModel viewModel = HomeScreenViewModel(
-      getAllCategoriesOrBrandsUseCase: injectGetAllCategoriesUseCase());
+  HomeScreenViewModel viewModel = getIt<HomeScreenViewModel>();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,7 @@ class _HomeTabState extends State<HomeTab> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CustomSearchBar(
+            const CustomSearchBar(
               cartItemCount: 0,
             ),
             Container(

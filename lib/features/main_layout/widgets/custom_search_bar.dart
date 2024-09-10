@@ -13,7 +13,8 @@ class CustomSearchBar extends StatelessWidget {
   final OnSearchBarChanged? onChanged;
   final VoidCallback? onCartPressed;
 
-  CustomSearchBar({
+  const CustomSearchBar({
+    super.key,
     required this.cartItemCount,
     this.hintText = 'what do you search for?',
     this.onChanged,
@@ -54,8 +55,8 @@ class CustomSearchBar extends StatelessWidget {
               padding: EdgeInsets.all(5.sp),
             ),
             position: badges.BadgePosition.topEnd(top: -10, end: -5),
-            badgeContent:
-                Text('$cartItemCount', style: TextStyle(color: Colors.white)),
+            badgeContent: Text('$cartItemCount',
+                style: const TextStyle(color: Colors.white)),
             child: IconButton(
               onPressed: onCartPressed,
               icon: const ImageIcon(AssetImage(IconAssets.icCart)),

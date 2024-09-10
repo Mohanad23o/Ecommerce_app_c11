@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app_c11/core/resources/color_manager.dart';
 import 'package:e_commerce_app_c11/core/resources/style_manager.dart';
 import 'package:e_commerce_app_c11/domain/entities/product_response_entity.dart';
+import 'package:e_commerce_app_c11/features/main_layout/tabs/category/cubit/products_screen_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
@@ -293,7 +294,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     ],
                   ),
                   ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      ProductsScreenViewModel.get(context)
+                          .addToCart(productId: widget.product.id ?? '');
+                    },
                     icon: const Icon(
                       Icons.shopping_cart_outlined,
                       color: Colors.white70,

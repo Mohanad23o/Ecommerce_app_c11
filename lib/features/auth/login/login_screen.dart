@@ -10,12 +10,14 @@ import 'package:e_commerce_app_c11/core/widgets/custom_text_form_field.dart';
 import 'package:e_commerce_app_c11/core/widgets/dialog_utils.dart';
 import 'package:e_commerce_app_c11/core/widgets/text_form_field_widget_with_title.dart';
 import 'package:e_commerce_app_c11/core/widgets/validators.dart';
-import 'package:e_commerce_app_c11/di/di_impl.dart';
+import 'package:e_commerce_app_c11/di/di.dart';
 import 'package:e_commerce_app_c11/features/auth/login/cubit/login_screen_view_model.dart';
 import 'package:e_commerce_app_c11/features/auth/login/cubit/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../domain/useCases/login_use_case.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -27,7 +29,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   LoginScreenViewModel viewModel =
-      LoginScreenViewModel(loginUseCase: injectLoginUseCase());
+      LoginScreenViewModel(loginUseCase: getIt<LoginUseCase>());
   bool obscurePassword = true;
 
   @override

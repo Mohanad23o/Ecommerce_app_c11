@@ -2,7 +2,9 @@ import 'package:e_commerce_app_c11/domain/useCases/register_use_case.dart';
 import 'package:e_commerce_app_c11/features/auth/register/cubit/register_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class RegisterScreenViewModel extends Cubit<RegisterStates> {
   RegisterUseCase registerUseCase;
 

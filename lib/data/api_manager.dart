@@ -1,24 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:e_commerce_app_c11/core/resources/app_constants.dart';
+import 'package:injectable/injectable.dart';
 
+@singleton
 class ApiManager {
-  static ApiManager? _instance;
   Dio dio = Dio();
 
-  ApiManager._();
-
-  static ApiManager getInstance() {
-    if (ApiManager._instance == null) {
-      _instance = ApiManager._();
-      return _instance!;
-    }
-    return _instance!;
-  }
-
   Future<Response> getData(String endPoint,
-      {Map<String, dynamic>? queryParameters}) {
+      {Map<String, dynamic>? queryParameters, Map<String, dynamic>? headers}) {
     return dio.get(ApiConstants.baseUrl + endPoint,
-        options: Options(validateStatus: ((status) => true)),
+        options: Options(validateStatus: ((status) => true), headers: headers),
         queryParameters: queryParameters);
   }
 
@@ -27,6 +18,16 @@ class ApiManager {
       Map<String, dynamic>? headers,
       Map<String, dynamic>? body}) {
     return dio.post(ApiConstants.baseUrl + endPoint,
+        options: Options(headers: headers, validateStatus: ((status) => true)),
+        data: body,
+        queryParameters: queryParameters);
+  }
+
+  Future<Response> deleteData(String endPoint,
+      {Map<String, dynamic>? queryParameters,
+      Map<String, dynamic>? headers,
+      Map<String, dynamic>? body}) {
+    return dio.delete(ApiConstants.baseUrl + endPoint,
         options: Options(headers: headers, validateStatus: ((status) => true)),
         data: body,
         queryParameters: queryParameters);

@@ -5,11 +5,13 @@ import 'package:e_commerce_app_c11/data/api_manager.dart';
 import 'package:e_commerce_app_c11/data/dataSource/remote_data_source/auth_remote_data_source.dart';
 import 'package:e_commerce_app_c11/data/model/login_response_dto.dart';
 import 'package:e_commerce_app_c11/data/model/register_response_dto.dart';
-import 'package:e_commerce_app_c11/di/di_impl.dart';
+import 'package:e_commerce_app_c11/di/di.dart';
 import 'package:e_commerce_app_c11/domain/error.dart';
+import 'package:injectable/injectable.dart';
 
+@Injectable(as: AuthRemoteDataSource)
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
-  ApiManager apiManager = injectApiManager();
+  ApiManager apiManager = getIt<ApiManager>();
 
   @override
   Future<Either<Failures, RegisterResponseDto>> register(

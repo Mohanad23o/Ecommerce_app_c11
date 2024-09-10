@@ -1,6 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce_app_c11/core/resources/utils/shared_preferences_utils.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/resources/app_constants.dart';
 import '../../../../domain/error.dart';
@@ -10,6 +11,7 @@ import '../../../model/category_response_dto.dart';
 import '../../../model/product_response_dto.dart';
 import '../home_remote_data_source.dart';
 
+@Injectable(as: HomeRemoteDataSource)
 class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   ApiManager apiManager;
 

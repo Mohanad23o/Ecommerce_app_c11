@@ -35,8 +35,4 @@ class AddToCartSuccessState extends ProductState {
   AddToCartSuccessState({required this.addToCartResponseEntity});
 }
 
-class ChangeNumOfAddedToCartItem extends ProductState {
-  int numOfItems;
 
-  ChangeNumOfAddedToCartItem({required this.numOfItems});
-}

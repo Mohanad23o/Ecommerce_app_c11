@@ -5,6 +5,8 @@ import 'package:e_commerce_app_c11/features/main_layout/main_layout.dart';
 import 'package:e_commerce_app_c11/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../features/main_layout/screens/cart/cart_products_screen.dart';
+
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -16,6 +18,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
       case Routes.mainRoute:
         return MaterialPageRoute(builder: (_) => const MainLayout());
+      case Routes.cartRoute:
+        return MaterialPageRoute(builder: (_) => CartProductsScreen());
       default:
         return unDefinedRoute();
     }

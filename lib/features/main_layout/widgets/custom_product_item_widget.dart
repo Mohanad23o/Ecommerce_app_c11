@@ -17,7 +17,7 @@ class CustomProductItemWidget extends StatelessWidget {
   // String rating;
   ProductEntity productEntity;
 
-  CustomProductItemWidget({required this.productEntity});
+  CustomProductItemWidget({super.key, required this.productEntity});
 
   @override
   Widget build(BuildContext context) {
