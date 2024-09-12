@@ -8,4 +8,6 @@ abstract class CartRemoteDataSource {
 
   Future<Either<Failures, GetCartResponseEntity>> deleteItemInCart(
       {required String productId});
+
+  Future<Either<Failures, GetCartResponseEntity>> deleteCartData();
 }

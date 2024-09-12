@@ -4,7 +4,10 @@ import 'package:e_commerce_app_c11/core/resources/font_manager.dart';
 import 'package:e_commerce_app_c11/core/resources/image_assets.dart';
 import 'package:e_commerce_app_c11/core/resources/style_manager.dart';
 import 'package:e_commerce_app_c11/core/resources/typeDef_constants.dart';
+import 'package:e_commerce_app_c11/core/routes_manager/routes.dart';
+import 'package:e_commerce_app_c11/features/main_layout/screens/cart/cubit/cart_products_screen_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomSearchBar extends StatelessWidget {
@@ -23,6 +26,7 @@ class CustomSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var bloc = BlocProvider.of<CartProductsScreenViewModel>(context);
     return Row(
       children: [
         Expanded(
@@ -55,10 +59,12 @@ class CustomSearchBar extends StatelessWidget {
               padding: EdgeInsets.all(5.sp),
             ),
             position: badges.BadgePosition.topEnd(top: -10, end: -5),
-            badgeContent: Text('$cartItemCount',
+            badgeContent: Text('${bloc.numOfItems}',
                 style: const TextStyle(color: Colors.white)),
             child: IconButton(
-              onPressed: onCartPressed,
+              onPressed: () {
+                Navigator.pushNamed(context, Routes.cartRoute);
+              },
               icon: const ImageIcon(AssetImage(IconAssets.icCart)),
             ),
           ),

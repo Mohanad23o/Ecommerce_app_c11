@@ -22,4 +22,9 @@ class CartRepositoryImpl implements CartRepository {
       {required String productId}) {
     return cartRemoteDataSource.deleteItemInCart(productId: productId);
   }
+
+  @override
+  Future<Either<Failures, GetCartResponseEntity>> deleteAllCartData() {
+    return cartRemoteDataSource.deleteCartData();
+  }
 }

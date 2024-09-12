@@ -7,4 +7,6 @@ abstract class CartRepository {
 
   Future<Either<Failures, GetCartResponseEntity>> deleteItemInCart(
       {required String productId});
+
+  Future<Either<Failures, GetCartResponseEntity>> deleteAllCartData();
 }

@@ -92,6 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextFormFieldWidgetWithTitle(
                     title: AppConstants.email,
                     textFormField: CustomTextFormField(
+                      borderSideColor: ColorManager.white,
                       textInputType: TextInputType.emailAddress,
                       hintText: AppConstants.emailHintText,
                       controller: viewModel.emailController,
@@ -106,6 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextFormFieldWidgetWithTitle(
                     title: AppConstants.password,
                     textFormField: CustomTextFormField(
+                        borderSideColor: ColorManager.white,
                         suffixIcon: InkWell(
                             onTap: () {
                               if (obscurePassword) {

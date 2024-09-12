@@ -1,4 +1,3 @@
-import 'package:e_commerce_app_c11/domain/entities/delete_cart_response_entity.dart';
 import 'package:e_commerce_app_c11/domain/entities/get_cart_response_entity.dart';
 
 abstract class CartState {}
@@ -28,7 +27,7 @@ class DeleteCartErrorState extends CartState {
 }
 
 class DeleteCartSuccessState extends CartState {
-  DeleteCartResponseEntity deleteCartResponseEntity;
+  GetCartResponseEntity getCartResponseEntity;
 
-  DeleteCartSuccessState({required this.deleteCartResponseEntity});
+  DeleteCartSuccessState({required this.getCartResponseEntity});
 }

@@ -76,6 +76,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   TextFormFieldWidgetWithTitle(
                       title: AppConstants.fullName,
                       textFormField: CustomTextFormField(
+                        borderSideColor: ColorManager.white,
                         controller: viewModel.nameController,
                         validator: (val) {
                           return AppValidators.validateUserName(val: val);
@@ -88,6 +89,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   TextFormFieldWidgetWithTitle(
                       title: AppConstants.phoneNumber,
                       textFormField: CustomTextFormField(
+                        borderSideColor: ColorManager.white,
                         textInputType: TextInputType.phone,
                         controller: viewModel.phoneNumController,
                         validator: (val) {
@@ -101,6 +103,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   TextFormFieldWidgetWithTitle(
                       title: AppConstants.email,
                       textFormField: CustomTextFormField(
+                        borderSideColor: ColorManager.white,
                         textInputType: TextInputType.emailAddress,
                         controller: viewModel.emailController,
                         validator: (val) {
@@ -114,6 +117,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   TextFormFieldWidgetWithTitle(
                     title: AppConstants.password,
                     textFormField: CustomTextFormField(
+                        borderSideColor: ColorManager.white,
                         suffixIcon: InkWell(
                             onTap: () {
                               if (obscurePassword) {
@@ -146,6 +150,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   TextFormFieldWidgetWithTitle(
                     title: AppConstants.confirmPassword,
                     textFormField: CustomTextFormField(
+                        borderSideColor: ColorManager.white,
                         suffixIcon: InkWell(
                             onTap: () {
                               if (obscurePassword) {

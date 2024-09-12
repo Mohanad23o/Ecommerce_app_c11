@@ -33,4 +33,5 @@ class ApiConstants {
   static const String signInApi = '/api/v1/auth/signin';
   static const String productsApi = '/api/v1/products';
   static const String addToCartApi = '/api/v1/cart';
+  static const String addToFavouritesApi = '/api/v1/wishlist';
 }

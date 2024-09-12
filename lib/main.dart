@@ -11,6 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'di/di.dart';
+import 'features/main_layout/tabs/favourite/cubit/favourites_tab_view_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +34,9 @@ void main() async {
     appRunner: () => runApp(MultiBlocProvider(providers: [
       BlocProvider<ProductsScreenViewModel>(
         create: (context) => getIt<ProductsScreenViewModel>(),
+      ),
+      BlocProvider<FavouritesTabViewModel>(
+        create: (context) => getIt<FavouritesTabViewModel>(),
       ),
       BlocProvider<CartProductsScreenViewModel>(
         create: (context) => getIt<CartProductsScreenViewModel>(),

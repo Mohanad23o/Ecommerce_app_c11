@@ -11,13 +11,17 @@ class CustomTextFormField extends StatelessWidget {
   bool obscureText;
   MyVaildator validator;
   String? hintText;
+  bool? isReadOnly;
   TextInputType? textInputType;
+  Color? borderSideColor;
   Widget? suffixIcon;
   TextStyle? labelStyle;
   String? labelText;
 
   CustomTextFormField({super.key, this.controller,
       this.suffixIcon,
+      this.isReadOnly,
+      this.borderSideColor,
       this.textInputType,
       this.labelStyle,
       this.labelText,
@@ -29,6 +33,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: isReadOnly!,
       keyboardType: textInputType,
       controller: controller,
       maxLines: maxLine,
@@ -40,8 +45,7 @@ class CustomTextFormField extends StatelessWidget {
           hintMaxLines: 2,
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
-              borderSide:
-                  const BorderSide(width: 1, color: ColorManager.white)),
+              borderSide: BorderSide(width: 1, color: borderSideColor!)),
           suffixIcon: suffixIcon,
           filled: true,
           fillColor: ColorManager.white,
@@ -52,12 +56,10 @@ class CustomTextFormField extends StatelessWidget {
           labelStyle: labelStyle,
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
-              borderSide:
-                  const BorderSide(width: 1, color: ColorManager.white)),
+              borderSide: BorderSide(width: 1, color: borderSideColor!)),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
-              borderSide:
-                  const BorderSide(width: 1, color: ColorManager.white)),
+              borderSide: BorderSide(width: 1, color: borderSideColor!)),
           errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
               borderSide: const BorderSide(width: 1, color: Colors.redAccent))),

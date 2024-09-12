@@ -18,4 +18,5 @@ class IconAssets {
   static const String icProfile = 'assets/images/icProfile.png';
   static const String icSearch = 'assets/images/icSearch.png';
   static const String icCart = 'assets/images/icCart.png';
+  static const String icDelete = 'assets/images/icDelete.png';
 }

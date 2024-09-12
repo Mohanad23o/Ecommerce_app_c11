@@ -11,7 +11,7 @@ class ProductsScreenViewModel extends Cubit<ProductState> {
   GetAllProductsUseCase getAllProductsUseCase;
   AddToCartUseCase addToCartUseCase;
   List<ProductEntity>? productList;
-  int? numOfCartItems;
+  int numOfCartItems = 0;
 
   ProductsScreenViewModel(
       {required this.getAllProductsUseCase, required this.addToCartUseCase})

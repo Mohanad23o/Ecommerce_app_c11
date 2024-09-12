@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app_c11/domain/entities/product_response_entity.dart';
 import 'package:e_commerce_app_c11/features/main_layout/tabs/category/cubit/products_screen_view_model.dart';
+import 'package:e_commerce_app_c11/features/main_layout/tabs/favourite/cubit/favourites_tab_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,13 +9,6 @@ import '../../../core/resources/color_manager.dart';
 import '../../../core/resources/image_assets.dart';
 
 class CustomProductItemWidget extends StatelessWidget {
-  // String url;
-  // String headerTitle;
-  // String description;
-  // VoidCallback? onAddTap;
-  // VoidCallback? onFavTap;
-  // num price;
-  // String rating;
   ProductEntity productEntity;
 
   CustomProductItemWidget({super.key, required this.productEntity});
@@ -25,7 +19,7 @@ class CustomProductItemWidget extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.r),
         color: Colors.transparent,
-        border: Border.all(color: const Color(0xff004182), width: 0.5),
+        border: Border.all(color: const Color(0xff004182), width: 0.5.w),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,10 +42,13 @@ class CustomProductItemWidget extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 8,
-                right: 8,
+                top: 8.h,
+                right: 8.w,
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    FavouritesTabViewModel.get(context)
+                        .addToFavourites(productId: productEntity.id ?? '');
+                  },
                   child: Container(
                     padding: EdgeInsets.all(3.sp),
                     decoration: BoxDecoration(
@@ -103,15 +100,6 @@ class CustomProductItemWidget extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
-                    SizedBox(width: 4.w),
-                    // Text(
-                    //   '2,000 EGP',
-                    //   style: TextStyle(
-                    //     fontSize: 12.sp,
-                    //     color: Colors.grey,
-                    //     decoration: TextDecoration.lineThrough,
-                    //   ),
-                    // ),
                   ],
                 ),
                 SizedBox(height: 4.h),
